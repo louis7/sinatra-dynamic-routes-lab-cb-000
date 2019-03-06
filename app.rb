@@ -2,9 +2,7 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
 
-  get '/' do
-  "hello world"
-end
+  
 
   get '/reversename/:name' do
   params[:name].reverse
@@ -43,21 +41,23 @@ get '/square/:number' do
 
 
      get '/:operation/:number1/:number2' do
-     num1 = params[:number1].to_i
-     num2 = params[:number2].to_i
-     answer = "unable to perform this ops"
-     if params[:operation] == 'add'
-       answer = num1 + num2
-     elsif params[:operation] == 'subtract'
-       answer = num2 - num1
-     elsif  params[:operation] == 'multiply'
-       answer = num1 * num2
-     elsif  params[:operation] == 'divide'
-       answer = num1 / num2
-     end
-      answer
+    number1 = params[:number1].to_i
+    number2 = params[:number2].to_i
 
-     end
+    answer = 'Unable to perform this operation'
+
+    case params[:operation]
+    when 'add'
+      answer = (number1 + number2).to_s
+    when 'subtract'
+      answer = (number1 - number2).to_s
+    when 'multiply'
+      answer = (number1 * number2).to_s
+    when 'divide'
+      answer = (number1 / number2).to_s
+    end
+  end
+
 
 
 
