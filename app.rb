@@ -60,7 +60,7 @@ get '/square/:number' do
      end
 
 
-    
+
 
 
 
